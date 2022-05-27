@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.gyojincompany.spring_29_1.dao.IDao">
+	<delete id="deleteDao">
+		DELETE FROM board WHERE mnum=#{param1}
+	</delete>
+	
+	<insert id="writeDao">
+		INSERT INTO board(mnum, mwriter, mcontent) VALUES (board_seq.nextval, #{param1}, #{param2})
+	</insert>
+	
+	<select id="listDao" resultType="com.gyojincompany.spring_29_1.dto.ContentDto">
+		SELECT * FROM board ORDER BY mnum DESC
+	</select>
+	
+	<select id="mviewDao" resultType="com.gyojincompany.spring_29_1.dto.ContentDto">
+		SELECT * FROM board WHERE mnum=#{param1}
+	</select>
+</mapper>
